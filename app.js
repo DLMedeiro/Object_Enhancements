@@ -12,8 +12,14 @@ Write an ES2015 Version
 
 */
 
+const createInstructor = (firstName, lastName) => ({
+    firstName,
+    lastName,
+});
+
 /*
 Computed Property Names
+
 var favoriteNumber = 42;
 
 var instructor = {
@@ -25,9 +31,16 @@ instructor[favoriteNumber] = "That is my favorite!"
 Write an ES2015 Version
 */
 
+let favoriteNumber = 42;
+const instructor = {
+    firstName: "Colt",
+    [favoriteNumber]: "That is my favorite!"
+}
+
 
 /*
 Object Methods
+
 var instructor = {
   firstName: "Colt",
   sayHi: function(){
@@ -40,7 +53,15 @@ var instructor = {
 
 Write an ES2015 Version
 */
-
+const instructor2 = {
+    firstName: "Colt",
+    sayHi() {
+      return "Hi!"
+    },
+    sayBye() {
+      return this.firstName + " says bye!";
+    }
+  }
 
 /*
 createAnimal function
@@ -59,3 +80,15 @@ const s = createAnimal("sheep", "bleet", "BAAAAaaaa")
 // {species: "sheep", bleet: ƒ}
 s.bleet() //"BAAAAaaaa"
 */
+
+function createAnimal(species, verb, noise){
+    return {
+        species,
+        [verb](){
+            return noise;
+         }
+    }
+};
+const d = createAnimal("dog", "bark", "Woooof!");
+// assigning result of calling creatAnimal with provided arguments
+// QUESTION: generateAnimal.yell(); is not working -> not initializing properly
